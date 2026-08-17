@@ -627,7 +627,7 @@ rop_sse_cmp(codeblock_t *block, ir_data_t *ir, uint32_t fetchdat, uint32_t op_32
 {
     int dest_reg = (fetchdat >> 3) & 7;
 
-    if (!scalar && op_sse_xmm)
+    if ((!scalar && op_sse_xmm) || (block->flags & CODEBLOCK_NO_IMMEDIATES))
         return 0;
 
     REQUIRE_GUEST_FEATURE(CPU_FEATURE_SSE);
