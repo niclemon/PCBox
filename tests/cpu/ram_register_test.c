@@ -211,6 +211,11 @@ void x86gpf(char *message, uint16_t error)
     CHECK(message == NULL && error == 0);
     record_exception(13);
 }
+void x86ss(char *message, uint16_t error)
+{
+    CHECK(message == NULL && error == 0);
+    record_exception(12);
+}
 
 /* Backend initialization allocates metadata here; executable chunks still
    come from the fixture allocator below, with gaps between chunks. */

@@ -137,6 +137,7 @@ option(QT           "Use the Qt-based user interface"                           
 option(SDL2         "Use SDL2 instead of SDL3"                                   OFF)
 option(BUILD_TESTING "Build the unit test suite"                                  OFF)
 option(BUILD_BENCHMARKS "Build performance benchmarks"                            OFF)
+option(PCBOX_ARCHTEST "Build the imported Pentium III architectural suite" OFF)
 
 if(BUILD_TESTING)
     enable_testing()
@@ -147,6 +148,8 @@ if(BUILD_BENCHMARKS)
 endif()
 if(BUILD_TESTING OR BUILD_BENCHMARKS)
     add_subdirectory(tests)
+elseif(PCBOX_ARCHTEST)
+    add_subdirectory(tests/cpu)
 endif()
 
 # The "new" (PCem v15 style) dynamic recompiler is the only recompiler that
